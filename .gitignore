@@ -1,0 +1,27 @@
+#.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+**/*.quarto_ipynb
+
+# Quarto
+.quarto/
+*_files/
+
+# RStudio
+.Rproj.user/
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# VS Code (falls du gelegentlich damit arbeitest)
+.vscode/
+
