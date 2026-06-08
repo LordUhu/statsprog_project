@@ -1,5 +1,79 @@
 ---
 title: "researchQuestions"
 format: html
+editor: Verena Thiemler
+  markdown: 
+    wrap: 72
 ---
 
+Source and licence: Data comes from \[https://github.com/KeithGalli/Olympics-Dataset/tree/master\] and uses the MIT License What is in it: 145500 rows/athletes, 10 columns / variables, the variables and example data can be read here:
+
+```{r}
+head(bios)
+```
+
+## Research questions:
+
+1.  Descriptive: Which citys per country are the athletes most likely to be born
+2.  Descriptive: Mean BMI of the athletes
+3.  Descriptive: How the athletes (e.g. their weight) changed over time
+4.  Explanatory: Does born_country influence weight/height?
+
+## Context and target audience
+
+Potentially journalistic, reporting about the changes over time regarding the participants of the olympic games, or a sports scientist interested in finding out whether a young talent is a typical athlete.
+
+## Initial data analysis
+
+```{r}
+glimpse(bios)
+```
+
+### Height
+
+```{r}
+bios %>%
+  summarise(
+    mean_height = mean(height_cm, na.rm = TRUE),
+    median_height = median(height_cm, na.rm = TRUE),
+    min_height = min(height_cm, na.rm = TRUE),
+    max_height = max(height_cm, na.rm = TRUE),
+    amount_NA = sum(is.na(height_cm))
+  )
+```
+
+### Weight
+
+```{r}
+bios %>%
+  summarise(
+    mean_weight = mean(weight_kg, na.rm = TRUE),
+    median_weight = median(weight_kg, na.rm = TRUE),
+    min_weight = min(weight_kg, na.rm = TRUE),
+    max_weight = max(weight_kg, na.rm = TRUE),
+    amount_NA = sum(is.na(weight_kg))
+  )
+```
+
+### Plot Height - Weight
+
+```{r}
+bios %>%
+  ggplot(aes(x = weight_kg, y = height_cm)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+### Plot showing height distribution
+
+```{r}
+bios %>%
+  ggplot(aes(x = height_cm)) +
+  geom_histogram(bins = 30)
+```
+
+## Quality Issues
+
+Just looking at height and weight, we already have accumulated \~80000 missing values.
+
+Also we have many string variables, which aren't very easy to present and summarize.
