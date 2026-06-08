@@ -1,0 +1,22 @@
+---
+title: "01-import"
+format: html
+---
+
+First of all we want to import the data from the github website
+
+```{r}
+library(tidyverse)
+
+raw_athletes = read_csv("https://raw.githubusercontent.com/KeithGalli/Olympics-Dataset/refs/heads/master/athletes/bios.csv")
+
+raw_results = read_csv("https://raw.githubusercontent.com/KeithGalli/Olympics-Dataset/refs/heads/master/results/results.csv")
+```
+
+And then we save the raw data
+
+```{r}
+library(here)
+saveRDS(raw_athletes, here("data", "interim", "raw_athletes.rds"))
+saveRDS(raw_results, here("data", "interim", "raw_results.rds"))
+```

@@ -2,6 +2,4 @@
 title: "Stats_Progressed_Project"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+In the following we want to learn something about olympia datasets

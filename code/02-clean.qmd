@@ -1,0 +1,10 @@
+---
+title: "02-clean"
+format: html
+---
+
+Now we want to clean the data
+
+```{r}
+
+```

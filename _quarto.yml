@@ -7,6 +7,12 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: code/01-import.qmd
+        text: Import
+      - href: code/02-clean.qmd
+        text: Clean
+      - href: code/03-analyse.qmd
+        text: Analyse
       - about.qmd
 
 format:
@@ -16,6 +22,7 @@ format:
       - brand
     css: styles.css
     toc: true
+
 
 
 
