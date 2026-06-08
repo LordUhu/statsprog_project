@@ -5,6 +5,77 @@ format: html
 
 Now we want to clean the data
 
+First of all we load the data
+
+```{r}
+library(tidyverse)
+library(here)
+
+raw_athletes = read_rds(here("data", "interim", "raw_athletes.rds"))
+raw_results = read_rds(here("data", "interim", "raw_results.rds"))
+```
+
+Then we clean the names
+
+```{r}
+library(janitor)
+
+tidy_athletes = raw_athletes %>%
+  clean_names()
+
+tidy_results = raw_results %>%
+  clean_names()
+```
+
+Now we clean up the results dataset
+
+```{r}
+library(dplyr)
+library(stringr)
+
+tidy_results = tidy_results %>%
+  mutate(
+    year = as.numeric(str_extract(games, "\\d{4}")),
+    year_season = str_extract(games, "Summer|Winter")
+  ) %>%
+  select(-games)
+
+tidy_results = tidy_results %>%
+  mutate(
+    rank = as.numeric(str_extract(pos, "\\d+"))
+  ) %>%
+  select(-pos)
+
+tidy_results = tidy_results %>% 
+  mutate(
+    athlete = as
+  ) %>%
+  select(-as) %>%
+  select(-unnamed_7) 
+
+tidy_results = tidy_results %>%
+  select(-nationality) %>%
+  mutate(
+    nationality = noc
+  )
+
+tidy_results
+
+```
+
+```{r}
+unique(tidy_results$noc)
+```
+
+And then the athletes dataset
+
 ```{r}
 
+```
+
+Now we store it
+
+```{r}
+library(here)
+saveRDS(tidy_athletes, here("data", "interim", "tidy_athletes.rds"))
 ```
